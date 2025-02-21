@@ -1,0 +1,42 @@
+// App-level build.gradle (android/app/build.gradle)
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin" // Flutter plugin
+}
+
+android {
+    namespace = "com.example.todo_app_bloc"  // Update with your app namespace
+    compileSdk = flutter.compileSdkVersion
+    ndkVersion = flutter.ndkVersion
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        applicationId = "com.example.todo_app_bloc"  // Your unique application ID
+        minSdk = flutter.minSdkVersion
+        targetSdk = flutter.targetSdkVersion
+        versionCode = flutter.versionCode
+        versionName = flutter.versionName
+    }
+
+    buildTypes {
+        release {
+            signingConfig = signingConfigs.debug  // Update with your release signing config if needed
+        }
+    }
+}
+
+flutter {
+    source = "../.."  // Reference to the Flutter project source
+}
+
+// Apply Firebase Google services plugin at the bottom
+apply plugin: 'com.google.gms.google-services'

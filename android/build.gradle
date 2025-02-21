@@ -1,0 +1,31 @@
+// Root-level build.gradle (android/build.gradle)
+buildscript {
+    repositories {
+        google()  // Make sure Google repository is included
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:7.0.4'  // Or use the version that works with your Flutter version
+        classpath 'com.google.gms:google-services:4.3.15'  // Firebase plugin for Google services
+    }
+}
+
+allprojects {
+    repositories {
+        google()  // Ensure this is included for Firebase to work
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
